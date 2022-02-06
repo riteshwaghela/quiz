@@ -57,6 +57,7 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
         this.componentRef.instance.quizObject = this.quizList[currentQuizIndex];
         this.componentRef.instance.quizHeading = quiz.heading;
         this.componentRef.instance.selectedAnswer = this.quizState?.quizUserAnswer[currentQuizIndex]?.userAnswer;
+        this.componentRef.instance.quizCounter = `${currentQuizIndex + 1} / ${this.quizList.length}`;
     }
 
     updateQuizState() {
@@ -77,11 +78,17 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
     }
 
     showResult() {
+        this.updateQuizState();
         this.isShowResult = true;
+        let extraMessage = '';
         const correctAnswerCount = this.quizState.quizUserAnswer.filter((userAnswer) => {
             return userAnswer.isAnswerCorrect
         }).length;
-        this.resultMessage =   `You scored ${correctAnswerCount} out of ${this.quizList.length}`; 
+
+        if(correctAnswerCount === this.quizList.length) {
+            extraMessage = 'You are a genious.'
+        }
+        this.resultMessage =   `You scored ${correctAnswerCount} out of ${this.quizList.length}. ${extraMessage}`; 
         this.voiceService.cancel();
         this.voiceService.speak(this.resultMessage);
     }

@@ -3,12 +3,12 @@ export const quiz = {
     quiz: [
         {
             question: 'Which is the capital of Gujarat?',
-            options: ['Patna', 'Gandhinagar', 'Kohima', 'Ranchi'],
+            options: ['Ahemdabad', 'Gandhinagar', 'Surat', 'Bhuj'],
             correctAnswer: 'Gandhinagar'
         },
         {
             question: 'Which is the capital of Madhya Pradesh?',
-            options: ['Bhopal', 'Gandhinagar', 'Kohima', 'Ranchi'],
+            options: ['Indore', 'Rewari', 'Bhopal', 'Ranchi'],
             correctAnswer: 'Bhopal'
         },
         {
@@ -18,32 +18,32 @@ export const quiz = {
         },
         {
             question: 'Which is the capital of Jharkhand?',
-            options: ['Hyderabad', 'Kolkata', 'Raipur', 'Ranchi'],
+            options: ['Hyderabad', 'Hazaribag', 'Bokaro', 'Ranchi'],
             correctAnswer: 'Ranchi'
         },
         {
             question: 'Which is the capital of Uttarakhand?',
-            options: ['Dehradun', 'Lucknow', 'Agartala', 'Shimla'],
+            options: ['Lucknow', 'Dehradun', 'Agartala', 'Shimla'],
             correctAnswer: 'Dehradun'
         },
         {
             question: 'Which is the capital of Himachal Pradesh?',
-            options: ['Shimla', 'Ranchi', 'Shilong', 'Raipur'],
+            options: ['Shilong', 'Ranchi', 'Shimla', 'Raipur'],
             correctAnswer: 'Shimla'
         },
         {
             question: 'Which is the capital of Chattisgadh?',
-            options: ['Raipur', 'Bhopal', 'Patna', 'Dispur'],
+            options: ['Dispur', 'Bhopal', 'Patna', 'Raipur'],
             correctAnswer: 'Raipur'
         },
         {
             question: 'Which is the capital of Tripura?',
-            options: ['Agartala', 'Aizwal', 'Imphal', 'Dispur'],
+            options: ['Agartala', 'Aizawl', 'Imphal', 'Dispur'],
             correctAnswer: 'Agartala'
         },
         {
             question: 'Which is the capital of Maharashtra?',
-            options: ['Mumbai', 'Pune', 'Bombay', 'Nasik'],
+            options: ['Bombay', 'Pune', 'Mumbai', 'Nasik'],
             correctAnswer: 'Mumbai'
         },
         {

@@ -21,6 +21,7 @@ import { QuizObject } from './models';
 export class QuizComponent implements OnInit {
     @Input('quizObject') quizObject!: QuizObject;
     @Input('quizHeading') quizHeading!: string;
+    @Input('quizCounter') quizCounter!: string;
 
     @Output() answerEvent = new EventEmitter<string>();
     expand: any;
