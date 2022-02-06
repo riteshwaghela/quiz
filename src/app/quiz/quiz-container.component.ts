@@ -1,4 +1,7 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, SystemJsNgModuleLoader, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+    AfterViewInit, Component, ComponentFactoryResolver,
+    ComponentRef, Input, OnInit, ViewChild, ViewContainerRef
+} from '@angular/core';
 
 import { QuizComponent } from './quiz.component';
 import { QuizObject, QuizState, QuizType } from './models';
@@ -7,8 +10,8 @@ import { countryCapitalQuiz } from '../country-capital.quiz';
 import { VoiceService } from '../voice.service';
 
 const initialQuizState = {
-    currentQuizIndex : 0,
-    quizUserAnswer : []
+    currentQuizIndex: 0,
+    quizUserAnswer: []
 }
 
 @Component({
@@ -19,31 +22,31 @@ const initialQuizState = {
 
 export class QuizContainerComponent implements OnInit, AfterViewInit {
     @Input('quizType') quizType!: QuizType;
-    public quizList: QuizObject[] = [];
-    public currentQuizIndex = 0;
     @ViewChild('quizComponentContainer', { read: ViewContainerRef }) quizComponentContainer!: ViewContainerRef;
+
+    quizList: QuizObject[] = [];
+    currentQuizIndex = 0;
     isShowResult = false;
     quizState: QuizState = initialQuizState;
     componentRef!: ComponentRef<QuizComponent>;
     resultMessage: string = '';
 
-    constructor(private resolver: ComponentFactoryResolver, private voiceService: VoiceService ) { }
+    constructor(private resolver: ComponentFactoryResolver, private voiceService: VoiceService) { }
 
     ngOnInit() {
-        if(this.quizType.type === 'India - State/Capital Quiz') {
+        if (this.quizType.type === 'India - State/Capital Quiz') {
             this.shuffleQuiz(quiz.quiz);
             this.quizList = quiz.quiz;
         } else {
             this.shuffleQuiz(countryCapitalQuiz.quiz);
             this.quizList = countryCapitalQuiz.quiz;
         }
-       
     }
 
     ngAfterViewInit() {
-        setTimeout( ()=> {
+        setTimeout(() => {
             this.creatQuizComponent(this.currentQuizIndex);
-        })
+        });
     }
 
     handlePrevious() {
@@ -69,19 +72,19 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
     }
 
     updateQuizState() {
-        this.quizState = {...this.quizState, currentQuizIndex : this.currentQuizIndex };
-        if(!this.quizState.quizUserAnswer[this.currentQuizIndex]) {
+        this.quizState = { ...this.quizState, currentQuizIndex: this.currentQuizIndex };
+        if (!this.quizState.quizUserAnswer[this.currentQuizIndex]) {
             this.quizState.quizUserAnswer.push({
                 quizObject: this.componentRef.instance.quizObject,
                 userAnswer: this.componentRef.instance.selectedAnswer,
                 isAnswerCorrect: this.componentRef.instance.selectedAnswer === this.componentRef.instance.quizObject.correctAnswer,
-                isAnswerSkipped:  this.componentRef.instance.selectedAnswer === ''
+                isAnswerSkipped: this.componentRef.instance.selectedAnswer === ''
             });
         } else {
             this.quizState.quizUserAnswer[this.currentQuizIndex].quizObject = this.componentRef.instance.quizObject;
             this.quizState.quizUserAnswer[this.currentQuizIndex].userAnswer = this.componentRef.instance.selectedAnswer;
             this.quizState.quizUserAnswer[this.currentQuizIndex].isAnswerCorrect = this.componentRef.instance.selectedAnswer === this.componentRef.instance.quizObject.correctAnswer;
-            this.quizState.quizUserAnswer[this.currentQuizIndex].isAnswerSkipped =  this.componentRef.instance.selectedAnswer === ''
+            this.quizState.quizUserAnswer[this.currentQuizIndex].isAnswerSkipped = this.componentRef.instance.selectedAnswer === ''
         }
     }
 
@@ -93,10 +96,10 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
             return userAnswer.isAnswerCorrect
         }).length;
 
-        if(correctAnswerCount === this.quizList.length) {
+        if (correctAnswerCount === this.quizList.length) {
             extraMessage = 'You are a genious.'
         }
-        this.resultMessage =   `You scored ${correctAnswerCount} out of ${this.quizList.length}. ${extraMessage}`; 
+        this.resultMessage = `You scored ${correctAnswerCount} out of ${this.quizList.length}. ${extraMessage}`;
         this.voiceService.cancel();
         this.voiceService.speak(this.resultMessage);
     }
@@ -105,6 +108,6 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
         for (let i = quizList.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [quizList[i], quizList[j]] = [quizList[j], quizList[i]];
-        } 
+        }
     }
 }

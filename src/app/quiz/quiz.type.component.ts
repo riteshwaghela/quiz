@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { quizTypes  } from '../quiz-type';
+import { quizTypes } from '../quiz-type';
 import { QuizType } from './models';
 
 @Component({
@@ -20,6 +20,6 @@ export class QuizTypeComponent implements OnInit {
     }
 
     launchSelectedQuiz(quizType: QuizType) {
-         this.quizTypeSelectedEvent.emit(quizType)
+        this.quizTypeSelectedEvent.emit(quizType)
     }
 }

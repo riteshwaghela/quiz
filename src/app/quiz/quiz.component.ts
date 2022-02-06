@@ -10,12 +10,12 @@ import { QuizObject } from './models';
     styleUrls: ['quiz.component.scss'],
     providers: [VoiceService],
     animations: [
-        trigger('detailExpand', [
-            state('false', style({ 'height': '0px', 'minHeight': '0', 'visibility': 'hidden' })),
+        trigger('quizExpand', [
+            state('false', style({ 'height': '200px', 'minHeight': '0', 'visibility': 'hidden' })),
             state('true', style({ 'height': '*', 'visibility': 'visible' })),
-            transition('true <=> false', animate('1000ms')),
-          ]),
-      ]
+            transition('true <=> false', animate('500ms')),
+        ]),
+    ]
 })
 
 export class QuizComponent implements OnInit {
@@ -24,18 +24,16 @@ export class QuizComponent implements OnInit {
     @Input('quizCounter') quizCounter!: string;
 
     @Output() answerEvent = new EventEmitter<string>();
-    expand: any;
 
+    expand: boolean = false;
     selectedAnswer: string = '';
-    
+
     constructor(private voiceService: VoiceService) { }
 
     ngOnInit() {
-        this.expand = 'false'
         setTimeout(() => {
-            this.expand = 'true'
-            console.log(this.expand)
-        }, 200)
+            this.expand = true;
+        });
         this.voiceService.cancel();
         this.voiceService.speak(this.quizObject.question);
         this.voiceService.speak('Your options are ');
@@ -49,6 +47,6 @@ export class QuizComponent implements OnInit {
         this.selectedAnswer = answer;
         this.answerEvent.emit(this.selectedAnswer);
         this.voiceService.cancel();
-        this.voiceService.speak('You selected '+answer)
+        this.voiceService.speak('You selected ' + answer)
     }
 }
