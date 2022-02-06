@@ -1,0 +1,27 @@
+<ng-template *ngIf="!isShowResult" #quizComponentContainer></ng-template>
+
+<div class="quiz-buttons" *ngIf="!isShowResult">
+    <button mat-raised-button color="primary" (click) = "handlePrevious()" [disabled]="currentQuizIndex === 0">Previous</button>
+    <button *ngIf="currentQuizIndex < quizList.length -1" mat-raised-button color="primary" (click) = "handleNext()">Next</button>
+    <button *ngIf="currentQuizIndex === quizList.length -1" mat-raised-button color="primary" (click) = "showResult()">Finish</button>
+</div>
+
+<div class="result-container" *ngIf="isShowResult">
+    Here is you result:
+    <br>
+    <table id="result-table">
+        <th> Question </th>
+        <th> Your Answer </th>
+        <th> Result </th>
+        <tr  *ngFor="let answer of quizState.quizUserAnswer; let i = index">
+            <td>  {{answer.quizObject.question}} </td>
+            <td>  {{answer.userAnswer}} </td>
+            <td>  {{ answer.isAnswerCorrect ? 'Correct' : 'Incorrect'}} </td>
+        </tr>
+    </table>
+
+    <div class="great-job" *ngIf="isShowResult">
+        {{ resultMessage }}
+     
+    </div>  
+</div>

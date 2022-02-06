@@ -1,0 +1,17 @@
+<div class="quiz-container" [@detailExpand]="expand">
+    <div class="heading">
+        {{quizHeading}}
+    </div>
+    <div class="question-answer">
+        <div class="question">
+            {{quizObject?.question}}
+        </div>
+        <div class="question-options">
+            <mat-radio-group  class="options-radio-group">
+                <mat-radio-button class="options-radio-button" (click)="onAnswer(option)" [checked]="option === selectedAnswer" *ngFor="let option of quizObject?.options" [value]="option">
+                    {{option}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
