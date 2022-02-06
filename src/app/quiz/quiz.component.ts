@@ -37,7 +37,7 @@ export class QuizComponent implements OnInit {
             console.log(this.expand)
         }, 200)
         this.voiceService.cancel();
-        this.voiceService.speak(this.quizObject.question)
+        this.voiceService.speak(this.quizObject.question);
         this.voiceService.speak('Your options are ');
         this.voiceService.speak(this.quizObject.options[0]);
         this.voiceService.speak(this.quizObject.options[1]);
