@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, Input, OnInit, SystemJsNgModuleLoader, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { QuizComponent } from './quiz.component';
-import { QuizObject, QuizState } from './models';
-import { quiz } from '../quiz'
+import { QuizObject, QuizState, QuizType } from './models';
+import { quiz } from '../india-state-capital.quiz';
+import { countryCapitalQuiz } from '../country-capital.quiz';
 import { VoiceService } from '../voice.service';
 
 const initialQuizState = {
@@ -17,6 +18,7 @@ const initialQuizState = {
 })
 
 export class QuizContainerComponent implements OnInit, AfterViewInit {
+    @Input('quizType') quizType!: QuizType;
     public quizList: QuizObject[] = [];
     public currentQuizIndex = 0;
     @ViewChild('quizComponentContainer', { read: ViewContainerRef }) quizComponentContainer!: ViewContainerRef;
@@ -28,8 +30,14 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
     constructor(private resolver: ComponentFactoryResolver, private voiceService: VoiceService ) { }
 
     ngOnInit() {
-        this.shuffleQuiz(quiz.quiz);
-        this.quizList = quiz.quiz;
+        if(this.quizType.type === 'India - State/Capital Quiz') {
+            this.shuffleQuiz(quiz.quiz);
+            this.quizList = quiz.quiz;
+        } else {
+            this.shuffleQuiz(countryCapitalQuiz.quiz);
+            this.quizList = countryCapitalQuiz.quiz;
+        }
+       
     }
 
     ngAfterViewInit() {
@@ -55,7 +63,7 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
         const factory = this.resolver.resolveComponentFactory(QuizComponent);
         this.componentRef = this.quizComponentContainer.createComponent(factory);
         this.componentRef.instance.quizObject = this.quizList[currentQuizIndex];
-        this.componentRef.instance.quizHeading = quiz.heading;
+        this.componentRef.instance.quizHeading = this.quizType.type;
         this.componentRef.instance.selectedAnswer = this.quizState?.quizUserAnswer[currentQuizIndex]?.userAnswer;
         this.componentRef.instance.quizCounter = `${currentQuizIndex + 1} / ${this.quizList.length}`;
     }

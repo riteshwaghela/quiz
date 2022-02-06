@@ -1,3 +1,4 @@
 <div class="app-quiz">
-  <app-quiz-container></app-quiz-container>
+  <app-quiz-type (quizTypeSelectedEvent) = "onQuizSelection($event)" *ngIf="!selectedQuizType?.type"></app-quiz-type>
+  <app-quiz-container [quizType]="selectedQuizType" *ngIf="selectedQuizType?.type"></app-quiz-container>
 </div>

@@ -1,0 +1,15 @@
+
+<div class="quiz-type-container">
+    <mat-card (click) = "launchSelectedQuiz(quizType)"class="quiz-type-card" *ngFor="let quizType of quizTypes">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="quiz-type-header-image"></div> -->
+          <mat-card-title>{{ quizType.type }} </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="quizType.imagePath" alt="Photo of India">
+        <mat-card-content>
+          <p>
+           {{ quizType.description }} 
+          </p>
+        </mat-card-content>
+      </mat-card>
+</div>

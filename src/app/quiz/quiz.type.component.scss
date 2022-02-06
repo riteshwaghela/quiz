@@ -1,0 +1,19 @@
+.quiz-type-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.quiz-type-card {
+    max-width: 400px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .quiz-type-header-image {
+    background-size: cover;
+  }
+
+  img {
+    height: 300px;
+  }

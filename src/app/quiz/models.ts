@@ -15,3 +15,9 @@ export interface QuizState {
     currentQuizIndex: number;
     quizUserAnswer: QuizUserAnswer[];
 }
+
+export interface QuizType {
+    type: string;
+    description: string;
+    imagePath: string;
+}

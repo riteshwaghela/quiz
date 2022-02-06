@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuizType } from './quiz/models';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'quiz';
+
+  selectedQuizType!: QuizType;
+
+  onQuizSelection(quizType: QuizType) {
+      this.selectedQuizType = quizType;
+  }
 }
