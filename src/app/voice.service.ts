@@ -9,6 +9,7 @@ export class VoiceService {
     public speechGrammarList: any;
     public speechRecognitionEvent;
     public recognition: any;
+    public isSoundDisabled = false;
 
     public voiceConfig = {
         volume: 5,
@@ -23,6 +24,9 @@ export class VoiceService {
     }
 
     speak(text: string) {
+        if(this.isSoundDisabled) {
+          return;
+        }
         let speech = new SpeechSynthesisUtterance();
         speech.lang = "en-US";
         speech.text = text;

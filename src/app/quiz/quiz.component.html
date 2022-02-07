@@ -1,6 +1,8 @@
-<div class="quiz-container" [@quizExpand]="expand">
+<div class="quiz-container" @fadeInGrow>
     <div class="heading">
-        <span> {{quizHeading}} </span> <span> {{quizCounter}} </span>
+        <span> {{quizHeading}} </span> 
+        <span style="margin-top: -10px"> <button mat-button (click) = "toggleSound()"> {{disableEnableButtonText}}</button> </span>
+         <span> {{quizCounter}} </span>
     </div>
     <div class="question-answer">
         <div class="question">
@@ -12,6 +14,7 @@
                     {{option}}
                 </mat-radio-button>
             </mat-radio-group>
+            <!-- <div> <img src="http://districts.nic.in/images/banner/30-uttar-pradesh-home.jpg"/></div> -->
         </div>
     </div>
 </div>
