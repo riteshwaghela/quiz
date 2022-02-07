@@ -52,7 +52,7 @@ export const quiz = {
             correctAnswer: 'Jaipur'
         },
         {
-            question: 'Which is the capital of Tamilndu?',
+            question: 'Which is the capital of Tamilnadu?',
             options: ['Chennai', 'Ooty', 'Madurai', 'Vellore'],
             correctAnswer: 'Chennai'
         },
