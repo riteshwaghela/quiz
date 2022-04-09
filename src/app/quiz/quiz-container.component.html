@@ -1,6 +1,6 @@
 <ng-template *ngIf="!isShowResult" #quizComponentContainer></ng-template>
 
-<div class="quiz-buttons" *ngIf="!isShowResult">
+<div class="quiz-buttons" *ngIf="!isShowResult && quizList.length">
     <button mat-raised-button color="primary" (click) = "handlePrevious()" [disabled]="currentQuizIndex === 0">Previous</button>
     <button *ngIf="currentQuizIndex < quizList.length -1" mat-raised-button color="primary" (click) = "handleNext()">Next</button>
     <button *ngIf="currentQuizIndex === quizList.length -1" mat-raised-button color="primary" (click) = "showResult()">Finish</button>

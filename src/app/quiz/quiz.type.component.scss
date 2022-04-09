@@ -1,7 +1,9 @@
+
 .quiz-type-container {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .quiz-type-card {

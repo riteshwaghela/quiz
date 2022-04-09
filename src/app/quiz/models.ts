@@ -20,4 +20,5 @@ export interface QuizType {
     type: string;
     description: string;
     imagePath: string;
+    quizPath: string;
 }

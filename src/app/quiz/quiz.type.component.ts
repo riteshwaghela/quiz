@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { quizTypes } from '../quiz-type';
+import { Observable } from 'rxjs';
+import { HttpService } from '../shared/services/http.service';
 import { QuizType } from './models';
 
 @Component({
@@ -9,14 +11,14 @@ import { QuizType } from './models';
 })
 
 export class QuizTypeComponent implements OnInit {
-    constructor() { }
+    constructor(private http: HttpService) { }
 
     @Output() quizTypeSelectedEvent = new EventEmitter<QuizType>();
 
-    quizTypes!: QuizType[];
+    quizTypes$!: Observable<QuizType[]>;
 
     ngOnInit() {
-        this.quizTypes = quizTypes;
+        this.quizTypes$ = this.http.getQuizTypes();
     }
 
     launchSelectedQuiz(quizType: QuizType) {

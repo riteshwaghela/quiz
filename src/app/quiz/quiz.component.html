@@ -9,7 +9,7 @@
             {{quizObject?.question}}
         </div>
         <div class="question-options">
-            <mat-radio-group  class="options-radio-group">
+            <mat-radio-group  class="options-radio-group" color="primary">
                 <mat-radio-button class="options-radio-button" (click)="onAnswer(option)" [checked]="option === selectedAnswer" *ngFor="let option of quizObject?.options" [value]="option">
                     {{option}}
                 </mat-radio-button>

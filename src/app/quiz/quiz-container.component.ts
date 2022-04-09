@@ -8,6 +8,7 @@ import { QuizObject, QuizState, QuizType } from './models';
 import { quiz } from '../india-state-capital.quiz';
 import { countryCapitalQuiz } from '../country-capital.quiz';
 import { VoiceService } from '../voice.service';
+import { HttpClient } from '@angular/common/http';
 
 const initialQuizState = {
     currentQuizIndex: 0,
@@ -20,7 +21,7 @@ const initialQuizState = {
     styleUrls: ['quiz-container.component.scss']
 })
 
-export class QuizContainerComponent implements OnInit, AfterViewInit {
+export class QuizContainerComponent implements OnInit {
     @Input('quizType') quizType!: QuizType;
     @ViewChild('quizComponentContainer', { read: ViewContainerRef }) quizComponentContainer!: ViewContainerRef;
 
@@ -31,20 +32,12 @@ export class QuizContainerComponent implements OnInit, AfterViewInit {
     componentRef!: ComponentRef<QuizComponent>;
     resultMessage: string = '';
 
-    constructor(private resolver: ComponentFactoryResolver, private voiceService: VoiceService) { }
+    constructor(private resolver: ComponentFactoryResolver, private voiceService: VoiceService, private http: HttpClient) { }
 
     ngOnInit() {
-        if (this.quizType.type === 'India - State/Capital Quiz') {
+        this.http.get(this.quizType.quizPath).subscribe((quiz: any) => {
             this.shuffleQuiz(quiz.quiz);
             this.quizList = quiz.quiz;
-        } else {
-            this.shuffleQuiz(countryCapitalQuiz.quiz);
-            this.quizList = countryCapitalQuiz.quiz;
-        }
-    }
-
-    ngAfterViewInit() {
-        setTimeout(() => {
             this.creatQuizComponent(this.currentQuizIndex);
         });
     }
