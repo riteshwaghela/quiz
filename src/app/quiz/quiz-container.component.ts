@@ -5,8 +5,6 @@ import {
 
 import { QuizComponent } from './quiz.component';
 import { QuizObject, QuizState, QuizType } from './models';
-import { quiz } from '../india-state-capital.quiz';
-import { countryCapitalQuiz } from '../country-capital.quiz';
 import { VoiceService } from '../voice.service';
 import { HttpClient } from '@angular/common/http';
 

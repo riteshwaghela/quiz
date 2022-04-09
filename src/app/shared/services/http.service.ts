@@ -7,7 +7,7 @@ export class HttpService {
     constructor(private http: HttpClient) { }
 
     public getQuizTypes() {
-       return this.http.get<QuizType[]>('https://gist.githubusercontent.com/riteshwaghela/57e688bdc6b1422fc07faf3e365382e7/raw/6beef09ad5459678090ad2dd06bafe62c249896e/quiz-types.json');
+       return this.http.get<QuizType[]>('https://gist.githubusercontent.com/riteshwaghela/57e688bdc6b1422fc07faf3e365382e7/raw/cab1d61d37c75e21d51f2c320c1b67ad06a3abe7/quiz-types.json');
     }
     
 }
