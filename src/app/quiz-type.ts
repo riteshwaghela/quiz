@@ -10,7 +10,7 @@ export const quizTypes: QuizType []= [{
     type: 'Country Capital Quiz',
     description: 'This quiz is world quiz. You will be asked question on capital of different countries.',
     imagePath: '../../assets/images/Country-capital.jpg',
-    quizPath: 'https://gist.githubusercontent.com/riteshwaghela/8cb6747c9a6759a3efccd3a79a604e8c/raw/b77e59f18e378ea2926eaf956145f0fd7abcbf86/country-capital.json'
+    quizPath: 'https://gist.githubusercontent.com/riteshwaghela/8cb6747c9a6759a3efccd3a79a604e8c/raw/5d5f21a0ec0b297dcc795d81b7de179053c0d8d3/country-capital.json'
 },
 {
     type: 'Asian Country Capital Quiz',

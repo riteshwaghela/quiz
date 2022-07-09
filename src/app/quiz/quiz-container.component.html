@@ -14,7 +14,9 @@
         <th> Your Answer </th>
         <th> Result </th>
         <tr  *ngFor="let answer of quizState.quizUserAnswer; let i = index">
-            <td>  {{answer.quizObject.question}} </td>
+            <td *ngIf="!answer.quizObject.question.startsWith('http')">  {{answer.quizObject.question}} </td>
+            <td *ngIf="answer.quizObject.question.startsWith('http')"> <img [src] = "answer.quizObject.question"/></td>
+
             <td>  {{answer.userAnswer}} </td>
             <td>  {{ answer.isAnswerCorrect ? 'Correct' : 'Incorrect'}} </td>
         </tr>

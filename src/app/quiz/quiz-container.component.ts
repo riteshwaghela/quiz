@@ -34,6 +34,18 @@ export class QuizContainerComponent implements OnInit {
 
     ngOnInit() {
         this.http.get(this.quizType.quizPath).subscribe((quiz: any) => {
+            // quiz = {
+            //     "heading": "Asian - Counttry Flag Quiz",
+            //     "quiz": [{
+            //         "question": "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/800px-Flag_of_India.svg.png",
+            //         "options": ["Iran", "India", "Iraq", "Egypt"],
+            //         "correctAnswer": "India"
+            //     }, {
+            //         "question": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Pakistan.svg/1200px-Flag_of_Pakistan.svg.png",
+            //         "options": ["Turkey", "Pakistan", "Afganistan", "Tajikistan"],
+            //         "correctAnswer": "Pakistan"
+            //     }]
+            // };
             this.shuffleQuiz(quiz.quiz);
             this.quizList = quiz.quiz;
             this.creatQuizComponent(this.currentQuizIndex);

@@ -61,7 +61,9 @@ export class QuizComponent implements OnInit {
     }
 
     private speakQuestionAnswer() {
-        this.voiceService.speak(this.quizObject.question);
+        if(!this.quizObject.question.startsWith('http')) {
+            this.voiceService.speak(this.quizObject.question);
+        }
         this.voiceService.speak('Your options are ');
         this.voiceService.speak(this.quizObject.options[0]);
         this.voiceService.speak(this.quizObject.options[1]);

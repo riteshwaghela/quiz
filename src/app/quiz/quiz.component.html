@@ -6,7 +6,10 @@
     </div>
     <div class="question-answer">
         <div class="question">
-            {{quizObject?.question}}
+            <ng-container *ngIf="quizObject?.question?.startsWith('http')" >  <img [src]="quizObject?.question"> </ng-container>
+            <ng-container *ngIf="!quizObject?.question?.startsWith('http')">   {{quizObject?.question}} </ng-container>
+
+           
         </div>
         <div class="question-options">
             <mat-radio-group  class="options-radio-group" color="primary">
